@@ -109,7 +109,8 @@ class DynamicNumberComponent extends React.Component {
                   className={this.props.className}
                   {...other}
                   value={this.state.viewValue}
-                  onChange={this.onChange} />
+                  onChange={this.onChange}
+                  onBlur={this.onChange} />
   }
 }
 

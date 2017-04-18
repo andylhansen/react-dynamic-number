@@ -20,9 +20,9 @@
     "url": "https://github.com/uhlryk/react-dynamic-number.git"
   },
   "scripts": {
-    "build": "./node_modules/webpack/bin/webpack.js",
-    "build-example": "./node_modules/webpack/bin/webpack.js --config ./example/webpack.config.js",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-register tests"
+    "build": "node ./node_modules/webpack/bin/webpack.js",
+    "build-example": "node ./node_modules/webpack/bin/webpack.js --config ./example/webpack.config.js",
+    "test": "node ./node_modules/.bin/mocha --compilers js:babel-register tests"
   },
   "author": "Krzysztof Sztompka <sztompka.krzysztof@gmail.com>",
   "license": "MIT",

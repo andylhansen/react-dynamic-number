@@ -47,7 +47,8 @@ class DynamicNumberComponent extends React.Component {
       viewValue: this.calculator.viewValue
     }
 
-    this.onChange= this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -102,6 +103,23 @@ class DynamicNumberComponent extends React.Component {
     });
   }
 
+  onBlur(evt) {
+    var target = evt.target;
+    this.dynamicNumber.calculate(evt.target.value, this.state.modelValue, this.state.viewValue, this.getCaretPosition(target));
+
+    var modelValue = this.dynamicNumber.modelValue;
+    var viewValue = this.dynamicNumber.viewValue;
+
+    if(this.props.onBlur) {
+      this.props.onBlur(evt, modelValue, viewValue);
+    }
+
+    this.setState({
+      modelValue: modelValue,
+      viewValue: viewValue
+    });
+  }
+
   render() {
     var { separator, integer, fraction, positive, negative, thousand, ...other } = this.props;
     return <input type="text"
@@ -110,7 +128,7 @@ class DynamicNumberComponent extends React.Component {
                   {...other}
                   value={this.state.viewValue}
                   onChange={this.onChange}
-                  onBlur={this.onChange} />
+                  onBlur={this.onBlur} />
   }
 }
 
